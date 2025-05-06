@@ -75,6 +75,13 @@ const TransaccionCuentas: React.FC<Props> = ({ show, nroCuentaOrigen, token, use
         cuenta_destino: cuentaDestino.nro_cuenta  
       }, token);
 
+      await TransaccionService.registrar({
+        cuenta: cuentaDestino.id,
+        tipo: 'ingreso',
+        monto: montoFloat,
+        cuenta_destino: cuentaOrigen.nro_cuenta
+      }, token);
+
       onSuccess();
       onClose();
       setMonto('');
